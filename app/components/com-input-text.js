@@ -1,0 +1,1 @@
+export { default } from 'ember-app-adn-login/components/com-input-text';
