@@ -42,6 +42,15 @@ export default Ember.Controller.extend({
         Logout() {
             // session service's invalidate method to invalidate the session
             this.get('session').invalidate();
+        },
+        testAuthorize(){
+            // authorize原理就是检查一下session的data是否有access_token，如果有，说明已经是验证通过的，然后对请求头header添加‘Authorization’属性。
+            // 相当于headers['Authorization'] = "Bearer " + accessToken;
+            this.get('session').authorize('authorizer:custom', (headerName, headerValue) => {
+                const headers = {};
+                headers[headerName] = headerValue;
+                Ember.$.ajax('/secret-data', { headers });
+            });
         }
     }
 });
