@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
     authManager: Ember.inject.service(),
+    session: Ember.inject.service(),    // Once the library is installed, the session service can be injected wherever needed in the application
     actions: {
         cancleAction() {
             Ember.Logger.log('login failed');
@@ -24,6 +25,23 @@ export default Ember.Controller.extend({
             }else{
                 alert('not login');
             }
+        },
+
+        Login() {
+            const { username_b, password_b } = this.getProperties('username_b', 'password_b');
+            this.get('session').authenticate('authenticator:selfAuth', username_b, password_b).then( ()=>{
+                Ember.Logger.log('Login login success.');
+                // The `authenticated` key holds the session data that the authenticator resolved with when the session was authenticated
+                // authenticate 成功的数据会自动保存在session.data.authenticated中
+                Ember.Logger.log(this.get('session.data.authenticated.token'));
+            }, err=>{
+                Ember.Logger.log('Login login failed.');
+                Ember.Logger.log(err);
+            });
+        },
+        Logout() {
+            // session service's invalidate method to invalidate the session
+            this.get('session').invalidate();
         }
     }
 });

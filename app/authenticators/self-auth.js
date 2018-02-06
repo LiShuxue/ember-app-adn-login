@@ -1,0 +1,1 @@
+export { default } from 'ember-app-adn-login/authenticators/self-auth';

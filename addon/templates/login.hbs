@@ -11,6 +11,21 @@
 }}
 <button {{action "testLoginSuccess"}}>测试是否登录成功</button>
 <hr />
+<br />
+
+
+<div>使用 ember-simple-auth 实现登录的控制</div>
+{{input type="text" value=username_b placeholder='username'}}
+{{input type="password" value=password_b placeholder="password"}}
+{{#if session.isAuthenticated}}
+    <button {{action 'Logout'}}>Logout</button>
+{{else}}
+    <button {{action 'Login'}}>Login</button>
+{{/if}}
+<hr />
+<br />
+
+
 {{link-to-external "点击跳转到外部（非engine内）链接" "test"}}
 <div {{action "testGo"}}>通过action点击跳转到外部链接</div>
 <hr />
