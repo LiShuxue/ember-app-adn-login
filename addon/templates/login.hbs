@@ -1,6 +1,6 @@
+<div>通过Service实现登录的控制</div>
 {{input type="text" value=username placeholder='username'}}
 {{input type="password" value=password placeholder="password"}}
-
 {{com-btn 
     text="Cancle" 
     onClickAction=(action "cancleAction") 
@@ -9,7 +9,8 @@
     text="Login" 
     onClickAction=(action "loginAction") 
 }}
-
+<button {{action "testLoginSuccess"}}>测试是否登录成功</button>
+<hr />
 {{link-to-external "点击跳转到外部（非engine内）链接" "test"}}
 <div {{action "testGo"}}>通过action点击跳转到外部链接</div>
 <hr />

@@ -7,11 +7,19 @@ export default Ember.Service.extend({
         return Ember.isEmpty(this.get('token')) ? false : true;
     }),
     authenticate(username, password) {
-        //模仿ajax请求。
-        return new EmberPromise( resolve=>{
-            setTimeout(()=>{
-                resolve('success');
-            }, 2000);
+       return Ember.$.ajax({
+            type: 'POST',
+            url: 'http://localhost:3000/api/user/login',
+            contentType: 'application/json;charset=UTF-8',
+            data: JSON.stringify({
+                username,
+                password
+            })
+        }).then( res=>{
+            Ember.Logger.log('service login success.');
+            this.set('token', res.token);
+        }, err=>{
+            Ember.Logger.log('service login failed.');
         });
     },
     invalidate() {
