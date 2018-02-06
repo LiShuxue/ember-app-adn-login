@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import { Promise as EmberPromise } from 'rsvp';
 
 export default Ember.Service.extend({
     token: null,
@@ -20,6 +19,7 @@ export default Ember.Service.extend({
             this.set('token', res.token);
         }, err=>{
             Ember.Logger.log('service login failed.');
+            Ember.Logger.log(err);
         });
     },
     invalidate() {
