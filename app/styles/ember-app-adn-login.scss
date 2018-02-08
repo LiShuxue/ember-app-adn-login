@@ -1,0 +1,9 @@
+@import "variables";
+@import "functions";
+@import "mixins";
+
+.test{
+    margin-top: test-function(10px);
+    color: $test-color;
+    @include test-mixin;
+}

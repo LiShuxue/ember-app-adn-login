@@ -1,0 +1,28 @@
+/* 
+    混合指令（Mixin）用于定义可重复使用的样式 
+    混合指令可以包含所有的 CSS 规则，绝大部分 Sass 规则，甚至可以通过参数功能引入变量。
+    使用 @include 指令引用混合样式
+
+   @mixin test1 {
+        font: {
+            family: Arial;
+            size: 20px;
+            weight: bold;
+        }
+        color: #ff0000;
+    }
+    @mixin test2($top: 0px, $right: 0px, $bottom: 0px, $left: 0px) {
+        margin-top: -$top;
+        margin-right: -$right;
+        margin-bottom: -$bottom;
+        margin-left: -$left;
+    }
+    .test3{
+        @include test1;
+        @include test2(10px, 30px, 10px, 5px);
+    }
+*/
+@mixin test-mixin {
+    background-color: blue;
+}
+

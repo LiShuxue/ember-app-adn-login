@@ -1,0 +1,9 @@
+/*
+    function可以传递若干个全局变量给函数作为参数。
+    一个函数可以含有多条语句，需要调用 @return 输出结果。
+    调用的时候可以使用关键词传参，如test-function($n: 5);
+*/
+@function test-function($testpx) {
+    @return 10px + $testpx;
+}
+
