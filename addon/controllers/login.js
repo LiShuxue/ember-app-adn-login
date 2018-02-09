@@ -1,8 +1,23 @@
 import Ember from 'ember';
+import { task } from 'ember-concurrency';
 
 export default Ember.Controller.extend({
     authManager: Ember.inject.service(),
     session: Ember.inject.service(),    // Once the library is installed, the session service can be injected wherever needed in the application
+    //先声明一个task
+    LoginTask: task(function* (){
+        const { username_b, password_b } = this.getProperties('username_b', 'password_b');
+        yield this.get('session').authenticate('authenticator:selfAuth', username_b, password_b).then( ()=>{
+            Ember.Logger.log('Login login success.');
+            // The `authenticated` key holds the session data that the authenticator resolved with when the session was authenticated
+            // authenticate 成功的数据会自动保存在session.data.authenticated中
+            Ember.Logger.log(this.get('session.data.authenticated.token'));
+        }, err=>{
+            Ember.Logger.log('Login login failed.');
+            Ember.Logger.log(err);
+        });
+    }).drop(),
+
     actions: {
         cancleAction() {
             Ember.Logger.log('login failed');
@@ -28,16 +43,7 @@ export default Ember.Controller.extend({
         },
 
         Login() {
-            const { username_b, password_b } = this.getProperties('username_b', 'password_b');
-            this.get('session').authenticate('authenticator:selfAuth', username_b, password_b).then( ()=>{
-                Ember.Logger.log('Login login success.');
-                // The `authenticated` key holds the session data that the authenticator resolved with when the session was authenticated
-                // authenticate 成功的数据会自动保存在session.data.authenticated中
-                Ember.Logger.log(this.get('session.data.authenticated.token'));
-            }, err=>{
-                Ember.Logger.log('Login login failed.');
-                Ember.Logger.log(err);
-            });
+            this.get('LoginTask').perform();   //在action中去调用这个task
         },
         Logout() {
             // session service's invalidate method to invalidate the session
