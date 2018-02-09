@@ -7,3 +7,12 @@
     color: $test-color;
     @include test-mixin;
 }
+
+.test-spinner {
+    display: block;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    background: assets('images/spinner-grey.svg') no-repeat;
+    background-size: 20px;
+}

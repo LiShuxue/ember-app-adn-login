@@ -7,3 +7,7 @@
     @return 10px + $testpx;
 }
 
+$base-assets-path: '../engines-dist/ember-app-adn-login/assets/';
+@function assets($path){
+    @return url($base-assets-path + $path);
+}
