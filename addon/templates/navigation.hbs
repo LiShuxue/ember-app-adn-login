@@ -5,12 +5,12 @@
     translucentOverlay=false 
     width=200 
     as |burger|}} 
-    {{#burger.menu itemTagName="li" as |menu|}}
+    {{#burger.menu itemTagName="li" dismissOnItemClick=true as |menu|}}
         <button {{action burger.state.actions.close}}>Close</button>
         <ul>
-            {{#menu.item}} {{#link-to 'login'}}login{{/link-to}} {{/menu.item}} 
-            {{#menu.item}} {{#link-to 'login'}}login{{/link-to}} {{/menu.item}} 
-            {{#menu.item}} {{#link-to 'login'}}login{{/link-to}} {{/menu.item}}
+            {{#menu.item}} {{#link-to 'navigation.login'}}login{{/link-to}} {{/menu.item}} 
+            {{#menu.item}} {{#link-to 'navigation.login'}}login{{/link-to}} {{/menu.item}} 
+            {{#menu.item}} {{#link-to 'navigation.login'}}login{{/link-to}} {{/menu.item}}
         </ul>
     {{/burger.menu}} 
 
