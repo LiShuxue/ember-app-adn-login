@@ -1,0 +1,21 @@
+{{#burger-menu 
+    animation='push' 
+    itemAnimation='push' 
+    position='left' 
+    translucentOverlay=false 
+    width=200 
+    as |burger|}} 
+    {{#burger.menu itemTagName="li" as |menu|}}
+        <button {{action burger.state.actions.close}}>Close</button>
+        <ul>
+            {{#menu.item}} {{#link-to 'login'}}login{{/link-to}} {{/menu.item}} 
+            {{#menu.item}} {{#link-to 'login'}}login{{/link-to}} {{/menu.item}} 
+            {{#menu.item}} {{#link-to 'login'}}login{{/link-to}} {{/menu.item}}
+        </ul>
+    {{/burger.menu}} 
+
+    {{#burger.outlet}}
+        <button {{action burger.state.actions.toggle}}>Menu</button>
+        {{outlet}} 
+    {{/burger.outlet}} 
+{{/burger-menu}}

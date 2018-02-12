@@ -1,6 +1,7 @@
 @import "variables";
 @import "functions";
 @import "mixins";
+@import 'ember-burger-menu';
 
 .test{
     margin-top: test-function(10px);
@@ -15,4 +16,10 @@
     height: 20px;
     background: assets('images/spinner-grey.svg') no-repeat;
     background-size: 20px;
+}
+
+.ember-burger-menu {
+    position: absolute;
+    height: 100%;
+    width: 100%;
 }
