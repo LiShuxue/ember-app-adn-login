@@ -11,7 +11,8 @@ const Eng = Engine.extend({
   Resolver,
   dependencies: {
     services: [
-      'logService'
+      'logService',
+      'i18n'
     ],
     externalRoutes: [
       'test'
