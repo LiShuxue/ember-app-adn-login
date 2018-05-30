@@ -1,21 +1,22 @@
-{{#burger-menu 
-    animation='push' 
-    itemAnimation='push' 
-    position='left' 
-    translucentOverlay=false 
-    width=200 
-    as |burger|}} 
+{{#burger-menu
+    animation='push'
+    itemAnimation='push'
+    position='left'
+    translucentOverlay=false
+    width=200
+    as |burger|}}
     {{#burger.menu itemTagName="li" dismissOnItemClick=true as |menu|}}
         <button {{action burger.state.actions.close}}>Close</button>
         <ul>
-            {{#menu.item}} {{#link-to 'navigation.login'}}login{{/link-to}} {{/menu.item}} 
-            {{#menu.item}} {{#link-to 'navigation.login'}}login{{/link-to}} {{/menu.item}} 
             {{#menu.item}} {{#link-to 'navigation.login'}}login{{/link-to}} {{/menu.item}}
+            {{#menu.item}} {{#link-to 'navigation.login'}}login{{/link-to}} {{/menu.item}}
+            {{#menu.item}} {{#link-to 'navigation.login'}}login{{/link-to}} {{/menu.item}}
+            {{#menu.item}} {{#link-to 'navigation.after-login'}}login first then to the target route{{/link-to}} {{/menu.item}}
         </ul>
-    {{/burger.menu}} 
+    {{/burger.menu}}
 
     {{#burger.outlet}}
         <button {{action burger.state.actions.toggle}}>Menu</button>
-        {{outlet}} 
-    {{/burger.outlet}} 
+        {{outlet}}
+    {{/burger.outlet}}
 {{/burger-menu}}
